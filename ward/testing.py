@@ -1,5 +1,7 @@
 import functools
 import inspect
+import sys
+import traceback
 import uuid
 from collections import defaultdict
 from contextlib import closing, redirect_stderr, redirect_stdout
@@ -217,6 +219,12 @@ class Test:
             if outcome in (TestOutcome.PASS, TestOutcome.SKIP):
                 result = TestResult(self, outcome)
             else:
+                if isinstance(exception, AssertionError):
+                    exc_traceback = sys.exc_info()[-1]
+                    exception.error_line = traceback.extract_tb(
+                        exc_traceback, limit=-1
+                    )[0].lineno
+
                 result = TestResult(
                     self,
                     outcome,

@@ -499,16 +499,12 @@ class SimpleTestResultWrite(TestResultWriterBase):
         )
 
     def output_test_failed_location(self, test_result: TestResult):
-        location = indent(colored("Location:", color="cyan", attrs=["bold"]), INDENT)
-        if isinstance(test_result.error, TestFailure):
+        if isinstance(test_result.error, TestFailure) or isinstance(
+            test_result.error, AssertionError
+        ):
             print(
-                location,
+                indent(colored("Location:", color="cyan", attrs=["bold"]), INDENT),
                 f"{test_result.test.path.relative_to(Path.cwd())}:{test_result.error.error_line}",
-            )
-        elif isinstance(test_result.error, AssertionError):
-            print(
-                location,
-                f"{test_result.test.path.relative_to(Path.cwd())}:{test_result.test.line_number}",
             )
 
     def output_test_run_post_failure_summary(self, test_results: List[TestResult]):
