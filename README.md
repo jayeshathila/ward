@@ -124,3 +124,6 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
+
+## Stats
+![visitors](https://visitor-badge.glitch.me/badge?page_id=jayeshathila.ward)	![code-size](https://img.shields.io/github/languages/code-size/jayeshathila/ward)
